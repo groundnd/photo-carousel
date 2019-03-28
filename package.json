@@ -2,7 +2,7 @@
   "name": "carousel_module",
   "version": "1.0.0",
   "description": "Component to handle the main photo gallery of the checkout page.",
-  "main": "bundle.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack -d -w",
