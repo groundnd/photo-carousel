@@ -1,9 +1,6 @@
 const path = require('path');
 
-<<<<<<< HEAD
-=======
 
->>>>>>> Entry and Output path fixed
 module.exports = {
   entry: path.join(__dirname, '/client/src/index.jsx'),
   module: {
@@ -21,11 +18,7 @@ module.exports = {
     ],
   },
   output: {
-<<<<<<< HEAD
     filename: 'app.js',
-=======
-    filename: 'bundle.js',
->>>>>>> Entry and Output path fixed
     path: path.join(__dirname, '/public'),
   },
 };
