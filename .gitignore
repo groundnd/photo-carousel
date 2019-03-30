@@ -1,2 +1,4 @@
 node_modules
-app.js
+carousel.app.js
+dbAccessKeys.js
+.DS_Store

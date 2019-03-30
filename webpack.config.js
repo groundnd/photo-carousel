@@ -17,8 +17,11 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: ['*', '.js', '.jsx', '.css'],
+  },
   output: {
-    filename: 'app.js',
+    filename: 'carousel.app.js',
     path: path.join(__dirname, '/public'),
   },
 };
