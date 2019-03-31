@@ -1,4 +1,3 @@
 node_modules
 carousel.app.js
-dbAccessKeys.js
-.DS_Store
+dbAccessKey.js
