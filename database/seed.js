@@ -1,5 +1,5 @@
-const photosAndComments = require('../database/index').photosAndComments;
-const dbGenerator = require('../database/dbGenerator').dbGenerator;
+const { photosAndComments } = require('../database/index');
+const { dbGenerator } = require('../database/dbGenerator');
 
 
 const seedDb = () => {

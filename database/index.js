@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const DBUSER = require('./dbAccessKey').DBUSER;
-const DBPW = require('./dbAccessKey').DBPW;
+const { DBUSER } = require('./dbAccessKey');
+const { DBPW } = require('./dbAccessKey');
 
 const db = mongoose.connect(`mongodb://${DBUSER}:${DBPW}@localhost/photosAndComments`, { useNewUrlParser: true });
 

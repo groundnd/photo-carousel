@@ -1,14 +1,14 @@
 const faker = require('faker');
-const urlPrefix = require('./imageUrls').urlPrefix;
-const japanUrls = require('./imageUrls').japanUrls;
-const italyUrls = require('./imageUrls').italyUrls;
-const usUrls = require('./imageUrls').usUrls;
-const singaporeUrls = require('./imageUrls').singaporeUrls;
-const bathroomUrls = require('./imageUrls').bathroomUrls;
-const bedroomUrls = require('./imageUrls').bedroomUrls;
-const kitchenUrls = require('./imageUrls').kitchenUrls;
-const livingRoomUrls = require('./imageUrls').livingRoomUrls;
-const otherUrls = require('./imageUrls').otherUrls;
+const { urlPrefix } = require('./imageUrls');
+const { japanUrls } = require('./imageUrls');
+const { italyUrls } = require('./imageUrls');
+const { usUrls } = require('./imageUrls');
+const { singaporeUrls } = require('./imageUrls');
+const { bathroomUrls } = require('./imageUrls');
+const { bedroomUrls } = require('./imageUrls');
+const { kitchenUrls } = require('./imageUrls');
+const { livingRoomUrls } = require('./imageUrls');
+const { otherUrls } = require('./imageUrls');
 
 
 // Function that generates a random number
@@ -29,7 +29,7 @@ const photoIdx = (urlCategory, selectedPhotos) => {
     // If number exists, already, rerun the function
     if (selectedPhotos[i] === photoIdx) {
       photoIdx(urlCategory);
-    // Else 
+    // Else
     } else {
       // Push number into the empty array
       selectedPhotos.push(photoIdx);
@@ -82,7 +82,7 @@ const dbGenerator = () => {
     // Randomly generate number between 1 - 2
     roomDataGenerator(1, 2, urlPrefix, bedroomUrls, currId);
     // LIVING ROOM
-    // If randomly generated number between 0 - 2 is greater than 0 
+    // If randomly generated number between 0 - 2 is greater than 0
     roomDataGenerator(0, 2, urlPrefix, livingRoomUrls, currId);
     // COUNTRY
     // If id is between 1 to 25
