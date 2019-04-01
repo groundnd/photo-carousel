@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const photosAndComments = require('../database/index').photosAndComments;
+const index = require('../database/index');
 
 const app = express();
 const PORT = 3001;
@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/photosandcomments/:id', (req, res) => {
-  photosAndComments.find().
+  index.photosAndComments.find().
     exec((err, data) => {
       if (err) {
         console.log('ERROR finding data from db: ', err);
