@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const dbGenerator = require('../../database/dbGenerator');
 const imageUrls = require('../../database/imageUrls');
 

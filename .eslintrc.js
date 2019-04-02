@@ -4,9 +4,13 @@ module.exports = {
     es6: true,
     node: true,
   },
-  extends: 'airbnb',
+  extends: [
+    'airbnb',
+    'jest/recommended',
+  ],
   plugins: [
     'react',
+    'jest'
   ],
   rules: {
   },
