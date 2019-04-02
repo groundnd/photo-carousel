@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.15.1
+      - image: circleci/mongo:4.0.3
+        environment:
+          - MONGO_INITDB_ROOT_USERNAME='circleci'
+          - MONGO_INITDB_ROOT_PASSWORD='dbaccess'
+          - MONGO_INITDB_DATABASE
+    
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - run: "npm install"
+      - run: "npm run build"
+      - run: "npm run seed"
+      - run: "npm run test"

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const { DBUSER } = require('./dbAccessKey');
-const { DBPW } = require('./dbAccessKey');
+const { DBUSER, DBPW } = require('./dbAccessKey');
+
 
 const db = mongoose.connect(`mongodb://${DBUSER}:${DBPW}@localhost/photosAndComments`, { useNewUrlParser: true });
 
@@ -19,8 +19,11 @@ const photosAndCommentsSchema = mongoose.Schema([
 const photosAndComments = mongoose.model('photosAndComments', photosAndCommentsSchema);
 
 
-module.exports.photosAndComments = photosAndComments;
-module.exports.db = db;
+module.exports = {
+  photosAndComments,
+  db,
+  photosAndCommentsSchema,
+};
 
 
 // const allData = (callback) => {
