@@ -1,12 +1,15 @@
 import React from 'react';
-import Enzyme, { shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import Carousel from '../../../../client/src/components/Carousel';
+import { shallow } from 'enzyme';
+import Carousel from '../../../../client/src/components/carousel';
 
 
 describe('Carousel', () => {
-  it('Should contain div', () => {
-    const wrapper = shallow(<Carousel />);
+  const wrapper = shallow(<Carousel />);
+  test('Should render', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  test('Should contain div', () => {
     expect(wrapper.find('div')).toExist();
   });
 });
