@@ -1,11 +1,13 @@
 import React from 'react';
 import $ from 'jquery';
+import styles from '../styles/carousel.css';
 
 
 class Carousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      data: null,
     };
   }
 
@@ -14,21 +16,36 @@ class Carousel extends React.Component {
   }
 
   getRequest() {
-    $.ajax ({
+    $.ajax({
       url: '/photosandcomments/:id',
       method: 'GET',
+      contentType: 'application/json',
       error: (err) => {
         console.log('GET ERR: ', err);
       },
-      success: (confirmation) => {
-        console.log('GET SUCCESS: ', confirmation);
+      success: (data) => {
+        console.log('GET SUCCESS: ', data);
+        this.setState({ data });
       },
-    })
+    });
   }
 
   render() {
+    const { data: dataArr } = this.state;
+    if (!dataArr) {
+      return (
+        <div className={styles.loading}>Loading...</div>
+      );
+    }
     return (
-      <div>Hi</div>
+      <div>
+        {dataArr[1].photosAndComments.map(photoandcomment => (
+          <div>
+            <img src={photoandcomment.imageUrl} alt="" />
+            <span>{photoandcomment.comment}</span>
+          </div>
+        ))}
+      </div>
     );
   }
 }
