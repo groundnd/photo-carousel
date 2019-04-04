@@ -22,8 +22,8 @@ module.exports = {
       {
         test: /\.css$/,
         loader: 'css-loader',
-        query: {
-          module: true,
+        options: {
+          modules: true,
           localIdentName: '[name]__[local]___[hash:base64:5]',
         },
       },

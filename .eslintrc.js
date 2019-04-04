@@ -6,12 +6,14 @@ module.exports = {
   },
   extends: [
     'airbnb',
-    'jest/recommended',
+    'plugin:jest/recommended',
   ],
   plugins: [
     'react',
     'jest'
   ],
+  parser: 'babel-eslint',
   rules: {
+    'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.jsx'] }],
   },
 };
