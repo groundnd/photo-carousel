@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.containerLessThan5 {
+  display: flex;
+}
+
+.firstImageLessThan5 {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+}
+
+.firstImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.secondImage {
+  display: none;
+}
+
+.thirdImage {
+  display: none;
+}
+
+.fourthImage {
+  display: none;
+}
+
+.fifthImage {
+  display: none;
+}
+
+
+@media only screen and (min-width: 744px) {
+
+  .container {
+    display: grid;
+    max-height: 372px;
+    grid-template-columns: repeat(3, 33.33%);
+    grid-template-rows: repeat(2, 50%);
+    grid-template-areas:
+    "firstImage firstImage secondImage"
+    "firstImage firstImage thirdImage";
+    overflow: hidden;
+    border: 2px solid darkgray;
+  }
+  
+  .firstImage {
+    grid-area: firstImage;
+    object-fit: cover;
+    min-height: 372px;
+  }
+  
+  .secondImage {
+    display: block;
+    grid-area: secondImage;
+    object-fit: cover;
+    width: 100%;
+    min-height: 186px;
+  }
+  
+  .thirdImage {
+    display: block;
+    grid-area: thirdImage;
+    object-fit: cover;
+    width: 100%;
+    min-height: 186px;
+  }
+}
+
+
+@media only screen and (min-width: 1126px) {
+
+  .container {
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: repeat(2, 50%);
+    grid-template-areas:
+    "firstImage firstImage secondImage fourthImage"
+    "firstImage firstImage thirdImage fifthImage";
+  }
+
+  .fourthImage {
+    display: block;
+    grid-area: fourthImage;
+    object-fit: fill;
+    width: 100%;
+    min-height: 186px;
+  }
+  
+  .fifthImage {
+    display: block;
+    grid-area: fifthImage;
+    object-fit: cover;
+    width: 100%;
+    min-height: 186px;
+  }
+}

@@ -11,6 +11,7 @@ const photosAndCommentsSchema = mongoose.Schema([
       {
         imageUrl: String,
         comment: String,
+        _id: false,
       },
     ],
   },

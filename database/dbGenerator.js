@@ -4,24 +4,22 @@ const imageUrls = require('./imageUrls');
 
 
 // Function that checks if photo has already been selected
-const photoIdx = (urlCategory, selectedPhotos) => {
+const photoIdx = (urlCategory, chosenPhotos) => {
   // Randomly generate a number between 0 and the amount of photos minus 1
   const currPhotoIdx = _.random(0, urlCategory.length - 1);
   // Iterate through the tracker array
-  if (selectedPhotos.length === 0) {
+  if (chosenPhotos.length === 0) {
     return currPhotoIdx;
   }
-  for (let i = 0; i < selectedPhotos.length; i += 1) {
+  for (let i = 0; i < chosenPhotos.length; i += 1) {
     // If number exists, already, rerun the function
-    if (selectedPhotos[i] === photoIdx) {
-      photoIdx(urlCategory);
-    // Else
-    } else {
-      // Push number into the empty array
-      selectedPhotos.push(photoIdx);
-      return currPhotoIdx;
+    if (chosenPhotos[i] === currPhotoIdx) {
+      return photoIdx(urlCategory, chosenPhotos);
     }
   }
+  // Push number into the empty array outside of this functions
+  selectedPhotos.push(currPhotoIdx);
+  return currPhotoIdx;
 };
 
 // Function that generates the room id data
@@ -31,7 +29,7 @@ const roomDataGenerator = (minNumPhoto, maxNumPhoto, urlPrefix, urlCategory, cur
   // Randomly generate number between min to max
   const numPhotos = _.random(minNumPhoto, maxNumPhoto);
   // While counter is less than or equal to randomly generated number
-  let count = 0;
+  let count = 1;
   while (count <= numPhotos) {
     // Create empty array to keep track of image already used
     const selectedPhotos = [];
@@ -108,6 +106,8 @@ const dbGenerator = () => {
 };
 
 
-module.exports.dbGenerator = dbGenerator;
-module.exports.photoIdx = photoIdx;
-module.exports.roomDataGenerator = roomDataGenerator;
+module.exports = {
+  dbGenerator,
+  photoIdx,
+  roomDataGenerator,
+};

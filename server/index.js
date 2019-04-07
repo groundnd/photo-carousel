@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const index = require('../database/index');
 
+
 const app = express();
 const PORT = 3001;
 
@@ -10,20 +11,40 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/photosandcomments/:id', (req, res) => {
-  index.photosAndComments.find().
-    exec((err, data) => {
+  index.photosAndComments.find()
+    .exec((err, data) => {
       if (err) {
         console.log('ERROR finding data from db: ', err);
       } else {
-        res.send(JSON.stringify(data));
+        res.setHeader('Content-Type', 'application/json');
+        res.json(data);
       }
     });
 });
+
+// app.get('/photosandcomments/:id', (req, res) => {
+//   index.photosAndComments.findOne({ id: parseInt(req.params.id, 10) }, { _id: 0 })
+//     .select('photosAndComments')
+//     .exec((err, data) => {
+//       if (err) {
+//         console.log('ERROR finding data from db: ', err);
+//       } else {
+//         res.setHeader('Content-Type', 'application/json');
+//         res.json(data);
+//       }
+//     });
+// });
+
 
 app.listen(PORT, () => {
   console.log(`listening to port ${PORT}`);
 });
 
+
+module.exports = {
+  app,
+  PORT,
+};
 
 // app.get('/photosandcomments/:id', (req, res) => {
 //   console.log(allData());
