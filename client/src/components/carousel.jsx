@@ -1,6 +1,8 @@
 import React from 'react';
 import $ from 'jquery';
 import styles from '../styles/carousel.css';
+import PhotoCollage from './photoCollage';
+import Modal from './modal';
 
 
 class Carousel extends React.Component {
@@ -39,12 +41,8 @@ class Carousel extends React.Component {
     }
     return (
       <div>
-        {dataArr[1].photosAndComments.map(photoandcomment => (
-          <div>
-            <img src={photoandcomment.imageUrl} alt="" />
-            <span>{photoandcomment.comment}</span>
-          </div>
-        ))}
+        <PhotoCollage dataArr={dataArr} />
+        <Modal dataArr={dataArr} />
       </div>
     );
   }
