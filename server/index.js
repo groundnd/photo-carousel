@@ -11,7 +11,8 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/photosandcomments/:id', (req, res) => {
-  index.photosAndComments.find()
+  index.photosAndComments.findOne({ id: parseInt(req.params.id, 10) }, { _id: 0 })
+    .select('photosAndComments')
     .exec((err, data) => {
       if (err) {
         console.log('ERROR finding data from db: ', err);
@@ -21,19 +22,6 @@ app.get('/photosandcomments/:id', (req, res) => {
       }
     });
 });
-
-// app.get('/photosandcomments/:id', (req, res) => {
-//   index.photosAndComments.findOne({ id: parseInt(req.params.id, 10) }, { _id: 0 })
-//     .select('photosAndComments')
-//     .exec((err, data) => {
-//       if (err) {
-//         console.log('ERROR finding data from db: ', err);
-//       } else {
-//         res.setHeader('Content-Type', 'application/json');
-//         res.json(data);
-//       }
-//     });
-// });
 
 
 app.listen(PORT, () => {
@@ -45,6 +33,19 @@ module.exports = {
   app,
   PORT,
 };
+
+
+// app.get('/photosandcomments/:id', (req, res) => {
+//   index.photosAndComments.find()
+//     .exec((err, data) => {
+//       if (err) {
+//         console.log('ERROR finding data from db: ', err);
+//       } else {
+//         res.setHeader('Content-Type', 'application/json');
+//         res.json(data);
+//       }
+//     });
+// });
 
 // app.get('/photosandcomments/:id', (req, res) => {
 //   console.log(allData());
