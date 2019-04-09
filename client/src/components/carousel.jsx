@@ -54,8 +54,7 @@ class Carousel extends React.Component {
   handleModalNextButton() {
     let { clickedIdx: idx } = this.state;
     const { data: dataArr } = this.state;
-    if (String(idx)
-    === String(dataArr.photosAndComments.length - 1)) {
+    if (String(idx) === String(dataArr.photosAndComments.length - 1)) {
       this.setState({
         clickedIdx: 0,
       });
@@ -81,10 +80,8 @@ class Carousel extends React.Component {
   }
 
   render() {
-    const { data: dataArr } = this.state;
-    const { displayModal: display } = this.state;
-    const { clickedIdx: idx } = this.state;
-    if (!dataArr) {
+    const { data, displayModal, clickedIdx } = this.state;
+    if (!data) {
       return (
         <div className={styles.loading}>Loading...</div>
       );
@@ -92,15 +89,15 @@ class Carousel extends React.Component {
     return (
       <div>
         <PhotoCollage
-          dataArr={dataArr}
+          dataArr={data}
           toggleModal={this.toggleModal}
           handleClickedImage={this.handleClickedImage}
         />
         <Modal
-          dataArr={dataArr}
+          dataArr={data}
           toggleModal={this.toggleModal}
-          displayModal={display}
-          clickedIdx={idx}
+          displayModal={displayModal}
+          clickedIdx={clickedIdx}
           handleModalNextButton={this.handleModalNextButton}
           handleModalPreviousButton={this.handleModalPreviousButton}
         />

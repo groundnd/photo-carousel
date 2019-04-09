@@ -2,12 +2,14 @@ import React from 'react';
 import styles from '../styles/photoCollage.css';
 
 
-const PhotoCollage = (props) => {
-  if (props.dataArr.photosAndComments.length < 5) {
+const PhotoCollage = ({
+  dataArr, handleClickedImage, toggleModal,
+}) => {
+  if (dataArr.photosAndComments.length < 5) {
     return (
       <div>
         <div className={styles.containerLessThan5}>
-          <img className={styles.firstImageLessThan5} src={props.dataArr.photosAndComments[0].imageUrl} onClick={() => {props.handleClickedImage(0, () => {props.toggleModal()})}} alt="host home" />
+          <img className={styles.firstImageLessThan5} src={dataArr.photosAndComments[0].imageUrl} onClick={() => {handleClickedImage(0, () => {toggleModal()})}} alt="host home" />
         </div>
       </div>
     );
@@ -15,11 +17,11 @@ const PhotoCollage = (props) => {
   return (
     <div>
       <div className={styles.container}>
-        <img className={styles.firstImage} src={props.dataArr.photosAndComments[0].imageUrl} onClick={() => {props.handleClickedImage(0, () => {props.toggleModal()})}} alt="host home" />
-        <img className={styles.secondImage} src={props.dataArr.photosAndComments[1].imageUrl} onClick={() => {props.handleClickedImage(1, () => {props.toggleModal()})}} alt="host home" />
-        <img className={styles.thirdImage} src={props.dataArr.photosAndComments[2].imageUrl} onClick={() => {props.handleClickedImage(2, () => {props.toggleModal()})}} alt="host home" />
-        <img className={styles.fourthImage} src={props.dataArr.photosAndComments[3].imageUrl} onClick={() => {props.handleClickedImage(3, () => {props.toggleModal()})}} alt="host home" />
-        <img className={styles.fifthImage} src={props.dataArr.photosAndComments[4].imageUrl} onClick={() => {props.handleClickedImage(4, () => {props.toggleModal()})}} alt="host home" />
+        <img className={styles.firstImage} src={dataArr.photosAndComments[0].imageUrl} onClick={() => {handleClickedImage(0, () => {toggleModal()})}} alt="host home" />
+        <img className={styles.secondImage} src={dataArr.photosAndComments[1].imageUrl} onClick={() => {handleClickedImage(1, () => {toggleModal()})}} alt="host home" />
+        <img className={styles.thirdImage} src={dataArr.photosAndComments[2].imageUrl} onClick={() => {handleClickedImage(2, () => {toggleModal()})}} alt="host home" />
+        <img className={styles.fourthImage} src={dataArr.photosAndComments[3].imageUrl} onClick={() => {handleClickedImage(3, () => {toggleModal()})}} alt="host home" />
+        <img className={styles.fifthImage} src={dataArr.photosAndComments[4].imageUrl} onClick={() => {handleClickedImage(4, () => {toggleModal()})}} alt="host home" />
       </div>
     </div>
   );
