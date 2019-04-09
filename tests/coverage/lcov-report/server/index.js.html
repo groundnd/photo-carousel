@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">94.12% </span>
+        <span class="strong">88.24% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>16/17</span>
+        <span class='fraction'>15/17</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">50% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">94.12% </span>
+        <span class="strong">88.24% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>16/17</span>
+        <span class='fraction'>15/17</span>
       </div>
     </div>
     <p class="quiet">
@@ -103,7 +103,8 @@
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -118,25 +119,13 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -147,6 +136,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -173,29 +175,17 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../public')));
 &nbsp;
 app.get('/photosandcomments/:id', (req, res) =&gt; {
-  index.photosAndComments.find()
+  index.photosAndComments.findOne({ id: parseInt(req.params.id, 10) }, { _id: 0 })
+    .select('photosAndComments')
     .exec((err, data) =&gt; {
-      <span class="missing-if-branch" title="if path not taken" >I</span>if (err) {
-<span class="cstat-no" title="statement not covered" >        console.log('ERROR finding data from db: ', err);</span>
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (err) {
+        console.log('ERROR finding data from db: ', err);
       } else {
-        res.setHeader('Content-Type', 'application/json');
-        res.json(data);
+<span class="cstat-no" title="statement not covered" >        res.setHeader('Content-Type', 'application/json');</span>
+<span class="cstat-no" title="statement not covered" >        res.json(data);</span>
       }
     });
 });
-&nbsp;
-// app.get('/photosandcomments/:id', (req, res) =&gt; {
-//   index.photosAndComments.findOne({ id: parseInt(req.params.id, 10) }, { _id: 0 })
-//     .select('photosAndComments')
-//     .exec((err, data) =&gt; {
-//       if (err) {
-//         console.log('ERROR finding data from db: ', err);
-//       } else {
-//         res.setHeader('Content-Type', 'application/json');
-//         res.json(data);
-//       }
-//     });
-// });
 &nbsp;
 &nbsp;
 app.listen(PORT, () =&gt; {
@@ -207,6 +197,19 @@ module.exports = {
   app,
   PORT,
 };
+&nbsp;
+&nbsp;
+// app.get('/photosandcomments/:id', (req, res) =&gt; {
+//   index.photosAndComments.find()
+//     .exec((err, data) =&gt; {
+//       if (err) {
+//         console.log('ERROR finding data from db: ', err);
+//       } else {
+//         res.setHeader('Content-Type', 'application/json');
+//         res.json(data);
+//       }
+//     });
+// });
 &nbsp;
 // app.get('/photosandcomments/:id', (req, res) =&gt; {
 //   console.log(allData());
@@ -223,7 +226,7 @@ module.exports = {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Apr 07 2019 14:42:23 GMT-0700 (PDT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Apr 08 2019 21:31:17 GMT-0700 (PDT)
 </div>
 </div>
 <script src="../prettify.js"></script>
