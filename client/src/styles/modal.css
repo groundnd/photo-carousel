@@ -8,22 +8,30 @@
   position: fixed;
   z-index: 1;
   top: 0;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgb(65, 64, 64);
   width: 100vw;
   height: 100vh;
   overflow: scroll;
 }
 
 .modalContent {
-  margin-top: 5%;
+  margin-top: 50px;
+}
+
+.modalImage {
+  display: flex;
+  align-items: center;
 }
 
 .modalImage > img {
   width: 100%;
+  max-height: 520px;
+  object-fit: contain;
 }
 
 .modalComment > span {
   width: 100%;
+  color: rgb(255, 255, 255);
 }
 
 .modalGallery {
@@ -36,6 +44,37 @@
   height: 60px;
   padding-right: 10px; 
   object-fit: cover;
+}
+
+.closeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 10px;
+  color: rgb(255, 255, 255);
+  font-size: 40px;
+  width: 40px;
+  height: 40px;
+}
+
+.nextButton {
+  position: absolute;
+  float: right;
+  right: 0;
+  color: rgb(255, 255, 255);
+  font-size: 80px;
+  width: 60px;
+  height: 60%;
+}
+
+.previousButton {
+  position: absolute;
+  float: left;
+  left: 0;
+  color: rgb(255, 255, 255);
+  font-size: 80px;
+  width: 60px;
+  height: 60%;
 }
 
 @media only screen and (min-width: 744px) {
