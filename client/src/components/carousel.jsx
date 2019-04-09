@@ -10,7 +10,13 @@ class Carousel extends React.Component {
     super(props);
     this.state = {
       data: null,
+      displayModal: false,
+      clickedIdx: null,
     };
+    this.toggleModal = this.toggleModal.bind(this);
+    this.handleClickedImage = this.handleClickedImage.bind(this);
+    this.handleModalNextButton = this.handleModalNextButton.bind(this);
+    this.handleModalPreviousButton = this.handleModalPreviousButton.bind(this);
   }
 
   componentDidMount() {
@@ -19,7 +25,7 @@ class Carousel extends React.Component {
 
   getRequest() {
     $.ajax({
-      url: '/photosandcomments/:id',
+      url: '/photosandcomments/89',
       method: 'GET',
       contentType: 'application/json',
       error: (err) => {
@@ -32,17 +38,69 @@ class Carousel extends React.Component {
     });
   }
 
-  render() {
+  toggleModal() {
+    const { displayModal: display } = this.state;
+    this.setState({
+      displayModal: !display,
+    });
+  }
+
+  handleClickedImage(clickedIndex, callback) {
+    this.setState({
+      clickedIdx: clickedIndex,
+    }, callback);
+  }
+
+  handleModalNextButton() {
+    let { clickedIdx: idx } = this.state;
     const { data: dataArr } = this.state;
-    if (!dataArr) {
+    if (String(idx) === String(dataArr.photosAndComments.length - 1)) {
+      this.setState({
+        clickedIdx: 0,
+      });
+    } else {
+      this.setState({
+        clickedIdx: idx += 1,
+      });
+    }
+  }
+
+  handleModalPreviousButton() {
+    let { clickedIdx: idx } = this.state;
+    const { data: dataArr } = this.state;
+    if (String(idx) === String(0)) {
+      this.setState({
+        clickedIdx: dataArr.photosAndComments.length - 1,
+      });
+    } else {
+      this.setState({
+        clickedIdx: idx -= 1,
+      });
+    }
+  }
+
+  render() {
+    const { data, displayModal, clickedIdx } = this.state;
+    if (!data) {
       return (
         <div className={styles.loading}>Loading...</div>
       );
     }
     return (
       <div>
-        <PhotoCollage dataArr={dataArr} />
-        <Modal dataArr={dataArr} />
+        <PhotoCollage
+          dataArr={data}
+          toggleModal={this.toggleModal}
+          handleClickedImage={this.handleClickedImage}
+        />
+        <Modal
+          dataArr={data}
+          toggleModal={this.toggleModal}
+          displayModal={displayModal}
+          clickedIdx={clickedIdx}
+          handleModalNextButton={this.handleModalNextButton}
+          handleModalPreviousButton={this.handleModalPreviousButton}
+        />
       </div>
     );
   }

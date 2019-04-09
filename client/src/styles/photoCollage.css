@@ -52,7 +52,7 @@
     "firstImage firstImage secondImage"
     "firstImage firstImage thirdImage";
     overflow: hidden;
-    border: 2px solid darkgray;
+    border: 2px solid rgb(136, 130, 130);
   }
   
   .firstImage {
