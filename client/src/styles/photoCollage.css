@@ -1,10 +1,11 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  
 }
 
 .containerLessThan5 {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   display: flex;
 }
 
@@ -15,6 +16,9 @@
 }
 
 .container {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   display: flex;
 }
 

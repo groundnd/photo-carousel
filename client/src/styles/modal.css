@@ -1,10 +1,7 @@
-* {
+.modal {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-.modal {
   position: fixed;
   z-index: 1;
   top: 0;
@@ -47,6 +44,9 @@
 }
 
 .closeButton {
+  background-color: transparent;
+  border: none;
+  outline: none;
   position: absolute;
   top: 0;
   right: 0;
@@ -58,6 +58,9 @@
 }
 
 .nextButton {
+  background-color: transparent;
+  border: none;
+  outline: none;
   position: absolute;
   float: right;
   right: 0;
@@ -68,6 +71,9 @@
 }
 
 .previousButton {
+  background-color: transparent;
+  border: none;
+  outline: none;
   position: absolute;
   float: left;
   left: 0;
