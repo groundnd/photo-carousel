@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import _ from 'lodash';
 import styles from '../styles/carousel.css';
 import PhotoCollage from './photoCollage';
 import Modal from './modal';
@@ -25,14 +26,14 @@ class Carousel extends React.Component {
 
   getRequest() {
     $.ajax({
-      url: '/photosandcomments/89',
+      url: `/photosandcomments/${_.random(1, 100)}`,
       method: 'GET',
       contentType: 'application/json',
       error: (err) => {
         console.log('GET ERR: ', err);
       },
       success: (data) => {
-        console.log('GET SUCCESS: ', data);
+        console.log(data);
         this.setState({ data });
       },
     });
