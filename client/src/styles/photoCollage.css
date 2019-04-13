@@ -106,7 +106,7 @@
     display: block;
     grid-area: secondImageContainer;
     width: 100%;
-    min-height: 186px;
+    min-height: 182px;
     overflow: hidden;
     border: 2px solid rgb(136, 130, 130);
   }
@@ -115,14 +115,14 @@
     display: block;
     object-fit: cover;
     width: 100%;
-    min-height: 186px;
+    min-height: 182px;
   }
   
   .thirdImageContainer {
     display: block;
     grid-area: thirdImageContainer;
     width: 100%;
-    min-height: 186px;
+    min-height: 182px;
     overflow: hidden;
     border: 2px solid rgb(136, 130, 130);
   }
@@ -131,7 +131,7 @@
     display: block;
     object-fit: cover;
     width: 100%;
-    min-height: 186px;
+    min-height: 182px;
   }
 }
 
@@ -150,7 +150,7 @@
     display: block;
     grid-area: fourthImageContainer;
     width: 100%;
-    min-height: 186px;
+    min-height: 182px;
     overflow: hidden;
     border: 2px solid rgb(136, 130, 130);
   }
@@ -159,14 +159,14 @@
     display: block;
     object-fit: cover;
     width: 100%;
-    min-height: 186px;
+    min-height: 182px;
   }
   
   .fifthImageContainer {
     display: block;
     grid-area: fifthImageContainer;
     width: 100%;
-    min-height: 186px;
+    min-height: 182px;
     overflow: hidden;
     border: 2px solid rgb(136, 130, 130);
   }
@@ -175,6 +175,6 @@
     display: block;
     object-fit: cover;
     width: 100%;
-    min-height: 186px;
+    min-height: 182px;
   }
 }
