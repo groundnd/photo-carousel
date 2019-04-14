@@ -8,7 +8,10 @@ const seedDb = () => {
     index.photosAndComments.db.dropCollection('photosandcomments');
   }
   index.photosAndComments.create(dbGenerator.dbGenerator())
-    .then(() => { mongoose.connection.close(); });
+    .then(() => { mongoose.connection.close(); })
+    .catch((error) => {
+      console.error(`DB ERROR: ${error.message}`);
+    });
 };
 
 seedDb();
