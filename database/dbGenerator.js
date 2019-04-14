@@ -4,29 +4,30 @@ const imageUrls = require('./imageUrls');
 
 
 // Function that checks if photo has already been selected
-const photoWasSelected = (urlCategory, selectedPhotos = []) => {
+const photoWasSelected = (urlCategory, selectedPhotosSet) => {
   // Randomly generate a number between 0 and the amount of photos minus 1
   const currPhotoIdx = _.random(0, urlCategory.length - 1);
   // If number exists, already, rerun the function
-  const selectedPhotosSet = new Set(selectedPhotos);
   if (selectedPhotosSet.has(currPhotoIdx) === false) {
-    // Push number into the empty array outside of this functions
-    selectedPhotos.push(currPhotoIdx);
+    // Return the unique index
     return currPhotoIdx;
   }
-  return photoWasSelected(urlCategory, selectedPhotos);
+  return photoWasSelected(urlCategory, selectedPhotosSet);
 };
 
 // Function that generates the room id data
 const roomDataGenerator = (minNumPhoto, maxNumPhoto, urlPrefix, urlCategory, currId) => {
   // Randomly generate number between min to max
   const numPhotos = _.random(minNumPhoto, maxNumPhoto);
+  const selectedPhotosSet = new Set();
   // While counter is less than or equal to randomly generated number
   for (let i = 0; i < numPhotos; i += 1) {
     // Create an empty object which will be the current data object in creation
     const roomData = {};
     // Select category photo that has not yet been used
-    const urlCategoryPhoto = urlCategory[photoWasSelected(urlCategory)];
+    const selectedPhoto = photoWasSelected(urlCategory, selectedPhotosSet);
+    selectedPhotosSet.add(selectedPhoto);
+    const urlCategoryPhoto = urlCategory[selectedPhoto];
     // Concat urlPrefix and photo url at generated index
     const photoUrl = urlPrefix + urlCategoryPhoto;
     // Assign empty object with key as 'imageUrl' and value as that concated text
