@@ -1,5 +1,5 @@
 node_modules
-carousel.app.js
+carousel.app.js*
 dbAccessKey.js
 tests/coverage
 .circleci/dbAccessInfo.js

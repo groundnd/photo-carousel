@@ -1,12 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const compression = require('compression');
 const index = require('../database/index');
 
 
 const app = express();
 const PORT = 3001;
 
+app.use(compression());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
