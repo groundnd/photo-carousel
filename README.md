@@ -26,7 +26,7 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
   GET - /photosandcomments/:id
   ```
 
-  - *There are no create, update, or delete API requests required for this component*
+  - *There are no create, update, or delete API requirements for this component*
 
 ### Installing Dependencies
 
