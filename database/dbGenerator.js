@@ -19,12 +19,24 @@ const roomDataGenerator = (urlPrefix, urlCategory, houseId) => {
 
 const dbGenerator = (houseId) => {
   const house = {};
-  house.bedroom = roomDataGenerator(imageUrls.urlPrefix, imageUrls.bedroomUrls, houseId);
-  house.living = roomDataGenerator(imageUrls.urlPrefix, imageUrls.livingRoomUrls, houseId);
-  house.country = roomDataGenerator(imageUrls.urlPrefix, imageUrls.allCountryUrls, houseId);
-  house.kitchen = roomDataGenerator(imageUrls.urlPrefix, imageUrls.kitchenUrls, houseId);
-  house.bath = roomDataGenerator(imageUrls.urlPrefix, imageUrls.bathroomUrls, houseId);
-  house.other = roomDataGenerator(imageUrls.urlPrefix, imageUrls.otherUrls, houseId);
+  for (let i = 0; i < _.random(1, 2); i += 1) {
+    house[`bedroom${i}`] = roomDataGenerator(imageUrls.urlPrefix, imageUrls.bedroomUrls, houseId);
+  }
+  for (let i = 0; i < _.random(0, 2); i += 1) {
+    house[`living${i}`] = roomDataGenerator(imageUrls.urlPrefix, imageUrls.livingRoomUrls, houseId);
+  }
+  for (let i = 0; i < _.random(1, 4); i += 1) {
+    house[`country${i}`] = roomDataGenerator(imageUrls.urlPrefix, imageUrls.allCountryUrls, houseId);
+  }
+  for (let i = 0; i < _.random(0, 1); i += 1) {
+    house[`kitchen${i}`] = roomDataGenerator(imageUrls.urlPrefix, imageUrls.kitchenUrls, houseId);
+  }
+  for (let i = 0; i < _.random(0, 1); i += 1) {
+    house[`bath${i}`] = roomDataGenerator(imageUrls.urlPrefix, imageUrls.bathroomUrls, houseId);
+  }
+  for (let i = 0; i < _.random(0, 4); i += 1) {
+    house[`other${i}`] = roomDataGenerator(imageUrls.urlPrefix, imageUrls.otherUrls, houseId);
+  }
   return house;
 };
 
