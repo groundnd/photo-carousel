@@ -1,7 +1,8 @@
 const _ = require('lodash');
 const faker = require('faker');
-const imageUrls = require('./imageUrls');
 const fs = require('fs');
+const imageUrls = require('./imageUrls');
+
 const houseWriter = fs.createWriteStream('./houseId.csv');
 const photoWriter = fs.createWriteStream('./PhotoInfo.csv');
 
@@ -91,36 +92,25 @@ const writeManyHouses = (writer, encoding, callback) => {
 };
 
 /*
-=========PostgreSQL=========
-photos  | comments |    id
---------|----------|--------
-url     |  lorem   |    1   
-url     |  lorem   |    1
-url     |  lorem   |    1
-url     |  lorem   |    1
-url     |  lorem   |    1
-url     |  lorem   |    2
-url     |  lorem   |    2
-url     |  lorem   |    2
-url     |  lorem   |    2
-url     |  lorem   |    2
-===========================
- houses
---------
-   1
-   2
-   3
-   4
-   5
-
-use Object.values() to grab values
-restructure generator
-
-need to change generator to have format of:
-{photo: url, comment: lorem, id: 1}
-
-url, lorem, 1
-url, lorem, 1
+==============PostgreSQL================
+ photoId |  photo  | comments | houseId
+---------|---------|----------|---------
+    1    |   url   |  lorem   |    1
+    2    |   url   |  lorem   |    1
+    3    |   url   |  lorem   |    1
+    4    |   url   |  lorem   |    1
+    5    |   url   |  lorem   |    2
+    6    |   url   |  lorem   |    2
+    7    |   url   |  lorem   |    2
+    8    |   url   |  lorem   |    2 
+========================================
+ houseId
+---------
+    1
+    2
+    3
+    4
+    5
 */
 
 writeManyHouses(houseWriter, 'utf8', () => console.log('Wrote house info.'));
@@ -128,6 +118,5 @@ writeManyPhotos(photoWriter, 'utf8', () => console.log('Wrote photo info.'));
 
 module.exports = {
   dbGenerator,
-  // photoWasSelected,
   roomDataGenerator,
 };
