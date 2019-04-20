@@ -1,6 +1,6 @@
 const urlPrefix = 'https://s3-us-west-1.amazonaws.com/fec-project-abodely-carousel/';
 
-const japanUrls = [
+const allCountryUrls = [
   'Japan/photo-1480796927426-f609979314bd.jpeg',
   'Japan/photo-1490761668535-35497054764d.jpeg',
   'Japan/photo-1490806843957-31f4c9a91c65.jpeg',
@@ -31,9 +31,6 @@ const japanUrls = [
   'Japan/photo-1542051841857-5f90071e7989.jpeg',
   'Japan/photo-1542931287-023b922fa89b.jpeg',
   'Japan/photo-1543402701-24cfa4f3a93d.jpeg',
-];
-
-const italyUrls = [
   'Italy/photo-1434025697302-54853b8da166.jpeg',
   'Italy/photo-1496301331109-7658c78361d4.jpeg',
   'Italy/photo-1496864137062-a12b5defe6be.jpeg',
@@ -58,9 +55,6 @@ const italyUrls = [
   'Italy/photo-1536783840042-a218b48bc070.jpeg',
   'Italy/photo-1541321814039-dc8c3e3a07cb.jpeg',
   'Italy/photo-1547064663-e9cfbcf39899.jpeg',
-];
-
-const usUrls = [
   'US/photo-1434137186716-a21ef91a36ba.jpeg',
   'US/photo-1479546085767-8903baea90c6.jpeg',
   'US/photo-1500111709600-7761aa8216c7.jpeg',
@@ -83,9 +77,6 @@ const usUrls = [
   'US/photo-1547190994-0dfe4ab1bdae.jpeg',
   'US/photo-1549865719-362cb29c7662.jpeg',
   'US/photo-1551074497-7c3d606bec52.jpeg',
-];
-
-const singaporeUrls = [
   'Singapore/photo-1490105171842-5fab28613c56.jpeg',
   'Singapore/photo-1494211870102-df67df81b14c.jpeg',
   'Singapore/photo-1496898382483-9a789056ffe8.jpeg',
@@ -248,10 +239,7 @@ const otherUrls = [
 
 
 module.exports.urlPrefix = urlPrefix;
-module.exports.japanUrls = japanUrls;
-module.exports.italyUrls = italyUrls;
-module.exports.usUrls = usUrls;
-module.exports.singaporeUrls = singaporeUrls;
+module.exports.allCountryUrls = allCountryUrls;
 module.exports.bathroomUrls = bathroomUrls;
 module.exports.bedroomUrls = bedroomUrls;
 module.exports.kitchenUrls = kitchenUrls;
