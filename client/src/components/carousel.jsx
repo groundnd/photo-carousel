@@ -4,6 +4,7 @@ import _ from 'lodash';
 import styles from '../styles/carousel.css';
 import PhotoCollage from './photoCollage';
 import Modal from './modal';
+import axios from 'axios';
 
 
 class Carousel extends React.Component {
@@ -25,23 +26,38 @@ class Carousel extends React.Component {
   }
 
   getRequest() {
-    const reqId = Number(window.location.pathname.split('/')[1]);
-    let id = _.random(1, 100);
-    if (reqId > 0 && reqId <= 100) {
-      id = reqId;
-    }
-    $.ajax({
-      url: `/photosandcomments/${id}`,
-      method: 'GET',
-      contentType: 'application/json',
-      error: (err) => {
-        console.log('GET ERR: ', err);
-      },
-      success: (data) => {
-        // console.log(data);
-        this.setState({ data });
-      },
-    });
+    const id = parseInt(window.location.pathname.split('/')[2]);
+    axios.get(`/photosandcomments/${id}`)
+      .then(response => {
+        console.log(response.data.rows);
+        let data = { id, photosAndComments: []};
+        for (let i = 0; i < response.data.rows.length; i += 1) {
+          data.photosAndComments.push({imageUrl: response.data.rows[i].photo, comment: response.data.rows[i].comment});
+        }
+        this.setState({
+          data,
+        })
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    // const reqId = Number(window.location.pathname.split('/')[1]);
+    // let id = _.random(1, 100);
+    // if (reqId > 0 && reqId <= 100) {
+    //   id = reqId;
+    // }
+    // console.log(id)
+    // $.ajax({
+    //   url: `/photosandcomments/${id}`,
+    //   method: 'GET',
+    //   error: (err) => {
+    //     console.log('GET ERR: ', err);
+    //   },
+    //   success: (data) => {
+    //     console.log(data);
+    //     // this.setState({ data });
+    //   },
+    // });
   }
 
   toggleModal() {
