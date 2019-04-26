@@ -5,7 +5,7 @@
   "main": "carousel.app.js",
   "scripts": {
     "build": "webpack -d",
-    "build:watch": "webpack -d -w",
+    "build:watch": "webpack -d --watch",
     "start": "nodemon server/index.js",
     "seed": "node database/seed.js",
     "test": "jest",
@@ -23,13 +23,17 @@
   },
   "homepage": "https://github.com/abode-ly/carousel_module#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "compression": "^1.7.4",
     "express": "^4.16.4",
+    "express-cassandra": "^2.3.0",
     "faker": "^4.1.0",
     "jquery": "^3.3.1",
     "lodash": "^4.17.11",
     "mongoose": "^5.4.20",
+    "newrelic": "^5.7.0",
+    "pg": "^7.10.0",
     "react": "^16.8.5",
     "react-dom": "^16.8.5"
   },
