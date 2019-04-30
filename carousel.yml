@@ -1,0 +1,17 @@
+config:
+  target: 'http://localhost:3001'
+  phases:
+    - duration: 300
+      arrivalRate: 500
+      # rampTo: 500
+      name: 'starting up'
+  payload:
+    path: "houseId.csv"
+    fields:
+      - "id"
+  # processor: "randomHome.js"
+scenarios:
+  - flow:
+    # - function: randomHome
+    - get:
+        url: "/photosandcomments/{{ id }}/"
