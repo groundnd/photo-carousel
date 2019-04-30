@@ -3,15 +3,19 @@ const faker = require('faker');
 const fs = require('fs');
 const imageUrls = require('./imageUrls');
 
-const houseWriter = fs.createWriteStream('./houseId.csv');
 const photoWriter = fs.createWriteStream('./PhotoInfo.csv');
+const idWriter = fs.createWriteStream('./houseId.csv');
 
 const lorem = faker.lorem.words();
+let photoId = 0;
 
 const roomDataGenerator = (urlPrefix, urlCategory, houseId) => {
   const info = [];
   const randomIndex = _.random(0, urlCategory.length - 1);
   const urlCategoryPhoto = urlCategory[randomIndex];
+  // const lorem = faker.lorem.words();
+  photoId += 1;
+  info.push(photoId);
   info.push(houseId);
   info.push(urlPrefix + urlCategoryPhoto);
   info.push(lorem);
@@ -51,7 +55,7 @@ const formatPhotoInfoToCSV = (home) => {
 };
 
 const writeManyPhotos = (writer, encoding, callback) => {
-  let i = 10000000;
+  let i = 1000000;
   function write() {
     let ok = true;
     do {
@@ -71,17 +75,17 @@ const writeManyPhotos = (writer, encoding, callback) => {
   write();
 };
 
-const writeManyHouses = (writer, encoding, callback) => {
-  let i = 10000000;
+const writeManyIds = (writer, encoding, callback) => {
+  let i = 1000;
   function write() {
     let ok = true;
     do {
-      const home = `${i}\n`;
+      let id = `${_.random(1, 10000000)}\n`;
       i -= 1;
       if (i === 0) {
-        writer.write(home, encoding, callback);
+        writer.write(id, encoding, callback);
       } else {
-        ok = writer.write(home, encoding);
+        ok = writer.write(id, encoding);
       }
     } while (i > 0 && ok);
     if (i > 0) {
@@ -91,30 +95,8 @@ const writeManyHouses = (writer, encoding, callback) => {
   write();
 };
 
-/*
-==============PostgreSQL================
- photoId |  photo  | comments | houseId
----------|---------|----------|---------
-    1    |   url   |  lorem   |    1
-    2    |   url   |  lorem   |    1
-    3    |   url   |  lorem   |    1
-    4    |   url   |  lorem   |    1
-    5    |   url   |  lorem   |    2
-    6    |   url   |  lorem   |    2
-    7    |   url   |  lorem   |    2
-    8    |   url   |  lorem   |    2 
-========================================
- houseId
----------
-    1
-    2
-    3
-    4
-    5
-*/
-
-writeManyHouses(houseWriter, 'utf8', () => console.log('Wrote house info.'));
-writeManyPhotos(photoWriter, 'utf8', () => console.log('Wrote photo info.'));
+// writeManyPhotos(photoWriter, 'utf8', () => console.log('Wrote photo info.'));
+writeManyIds(idWriter, 'utf8', () => console.log('Wrote house ID info.'));
 
 module.exports = {
   dbGenerator,

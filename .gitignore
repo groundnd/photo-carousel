@@ -3,3 +3,10 @@ carousel.app.js*
 dbAccessKey.js
 tests/coverage
 .circleci/dbAccessInfo.js
+newrelic.js
+*.csv
+*.txt
+*.log
+cassandra.js
+commands.sql
+*.rdb
